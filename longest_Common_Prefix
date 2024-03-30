@@ -1,0 +1,52 @@
+string longestCommonPre(vector<string>&strs){
+    if(strs.empty())
+    return "";
+    
+    string prefix=strs[0];
+    for(int i=1;i<strs.size();++i){
+        int j=0;
+        while(j<prefix.size() && j<strs[i].size() && prefix[j]=strs[i][j]){
+            ++j;
+        }
+        prefix=prefix.subset(0,j);
+        if(prefix.empty())
+        return "";
+    }
+    return prefix;
+}
+
+int main(){
+    vector<string>strs={"flower","flow","flight"};
+    cout<<"longest common prefix:"<<longestCommonPre(strs);
+    return 0;
+}
+
+//Rust Program
+
+fn longestCommonPre(strs: &[String])->String{
+    if(strs.is_empty()){
+        return String::new();
+    }
+    let mut prefix=strs[0].clone();
+    
+    for s in strs.iter().skip(1){
+        let mut iter=prefix.chars().zip(s.chars());
+        let mut common=String::new();
+        
+        while let Some((ch1,ch2))=iter.next(){
+            if ch1!=ch2{
+                break;
+            }
+            common.push(ch1);
+        }
+        prefix=common;
+        if prefix.is_empty(){
+            break;
+        }
+    }
+    prefix;
+}
+fn main(){
+    let strs=vec!["flower".to_string(),"flow".to_string(),"flight".to_string()];
+    println!("longest common prefix:{}", longestCommonPre(&strs));
+}
