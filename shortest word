@@ -1,0 +1,56 @@
+string short(string input){
+    int n=input.length();
+    int start=0; end=0;
+    int minln=n,minSt=0;
+    while(end<=n){
+        if(end<n && input[end]!=' '){
+            end++;
+        }
+        else{
+            int curr=end-start;
+            if(curr<minln){
+                minln=curr;
+                minSt=start;
+            }
+            end++;
+            start=end;
+        }
+    }
+    return input.substr(minSt,minln);
+}
+int main(){
+    string s="a ab abc abcd";
+    string short=short(s);
+    cout<<"shortest word: "<<short<<endl;
+    return 0;
+}
+//Rust Program
+
+fn short(input: &str)->String{
+    let mut start=0;
+    let mut end=0;
+    let mut minln=input.len();
+    let mut minst=0;
+    
+    while end<=input.len(){
+        if end<input.len() && !input[end..end+1].chars().all(char::is_whitespace){
+            end+=1;
+        }
+        else{
+            let currln=end-start;
+            if currln<minln{
+                minln=currln;
+                minst=start;
+            }
+            end+=1;
+            start=end;
+            }
+    }
+    input[minst..minst+minln].to_string()
+}
+    
+int main(){
+    let s="a ab abc abcd";
+    let short=short(s);
+    println("shortest word: {}", short);
+}   
