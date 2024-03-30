@@ -1,0 +1,16 @@
+Check if a number is prime in Rust
+fn isprime(n:i32)->bool {
+    if n<=1{
+        return false;
+    }
+    for i in 2..=n/2 {
+        if n%i==0 {
+            return false;
+        }
+    }
+    true
+}
+fn main() {
+    println!("{}", if isprime(10) { "true" } else { "false" });
+    println!("{}", if isprime(17) { "true" } else { "false" });
+}
