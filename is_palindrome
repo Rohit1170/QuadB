@@ -1,0 +1,33 @@
+string ispal(string s){
+  int n=s.length();
+  for(int i=0;i<n/2;i++){
+    if(s[i]!=s[n-i-1]){
+      return "NO";
+    }  
+  }
+  return "YES";
+}
+
+int main(){
+  string s="ABCBA";
+  cout<<ispal(s);
+  return 0;
+}
+
+my strong hand is in C++
+
+here is rust program
+
+fn ispal(s:&str)->String{
+  for(i,c) in s.chars().enumerate().take(s.len()/2);
+  {
+    if c!=s.chars().rev().nth(i).unwrap(){
+      return String::from("No");
+    }
+  }
+  String::from("Yes)
+}
+fn main(){
+  let s=String::from("ABCBA");
+  println!("{}",ispal(&s));
+}
